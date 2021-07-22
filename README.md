@@ -18,5 +18,5 @@
 
 ## Login info
 
-username: pilot
-password: g64gr3gh
+-username: pilot
+-password: g64gr3gh
