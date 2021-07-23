@@ -28,4 +28,9 @@ public class Flight {
     @JoinColumn
     @JsonIgnore
     private User user;
+
+    public String toString() {
+        return "Departure city: " + this.getCity() + " Destination city: " + this.getDestination()
+                + " Departure time: " + this.getDeparture() + " Arrival time: " + this.getArrival();
+    }
 }

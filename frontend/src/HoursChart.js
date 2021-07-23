@@ -14,7 +14,7 @@ import moment from "moment";
 import ChartsBackButton from "./ChartsBackButton";
 
 const format = (date) => {
-  return moment(date).format("YY-MM-DD");
+  return moment(date).format("YY-MM");
 };
 
 const formatMills = (date) => {
