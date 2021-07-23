@@ -18,5 +18,8 @@
 
 ## Login info
 
-username: pilot\
+One user with some flight data already in db:
+username: John Doe\
 password: g64gr3gh
+
+You can also register a new user.
