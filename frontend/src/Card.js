@@ -1,9 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import pilot from "./images/pilot.jpg";
 import { Link } from "react-router-dom";
 import Message from "./Message";
+import axios from "axios";
 
 const Card = () => {
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await axios.get("/api/users/current", {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        });
+        console.log(response);
+        setUsername(response.data.username);
+        localStorage.setItem("user", response.data.id);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    fetchData();
+  }, []);
+
   const token = localStorage.getItem("token");
 
   return !token ? (
@@ -52,7 +73,7 @@ const Card = () => {
         </div>
         <div>
           <img src={pilot} alt="" height="75%" />
-          <h1 className="mt-2">John Doe</h1>
+          <h1 className="mt-2">{username}</h1>
           <h6>Senior First Officer/ Co- Pilot</h6>
         </div>
       </div>

@@ -6,11 +6,12 @@ import { useHistory } from "react-router-dom";
 const Total = () => {
   const [total, setTotal] = useState();
   const history = useHistory();
+  const userId = localStorage.getItem("user");
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get("/api/total", {
+        const response = await axios.get(`/api/flights/total/${userId}`, {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),
           },

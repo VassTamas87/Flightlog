@@ -10,11 +10,12 @@ const Charts = () => {
   const [barChart, setBarChart] = useState(true);
   const [lineChart, setLineChart] = useState(false);
   const history = useHistory();
+  const userId = localStorage.getItem("user");
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get("/api/cities", {
+        const response = await axios.get(`/api/flights/cities/${userId}`, {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),
           },
@@ -33,7 +34,7 @@ const Charts = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get("/api/flights", {
+        const response = await axios.get(`/api/flights/listall/${userId}`, {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),
           },

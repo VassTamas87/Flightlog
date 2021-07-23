@@ -13,10 +13,11 @@ const format = (date) => {
 const Flights = () => {
   const [flights, setFlights] = useState([]);
   const history = useHistory();
+  const userId = localStorage.getItem("user");
 
   const remove = async (flight) => {
     try {
-      await axios.delete(`/api/delete/${flight.id}`, {
+      await axios.delete(`/api/flights/delete/${flight.id}`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },
@@ -30,7 +31,7 @@ const Flights = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get("/api/flights", {
+        const response = await axios.get(`/api/flights/listall/${userId}`, {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),
           },

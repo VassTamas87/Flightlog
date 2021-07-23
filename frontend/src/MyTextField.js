@@ -13,7 +13,6 @@ const MyTextField = ({ label, ...props }) => {
           meta.touched && meta.error ? "is-invalid" : ""
         }`}
       />
-
       <ErrorMessage
         name={props.name}
         className="invalid-feedback"

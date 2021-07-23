@@ -10,6 +10,7 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 import Charts from "./Charts";
 import Login from "./Login";
 import Message from "./Message";
+import Register from "./Register";
 
 function App() {
   return (
@@ -57,6 +58,12 @@ function App() {
               <title>Charts</title>
             </Helmet>
             <Charts />
+          </Route>
+          <Route exact path="/register">
+            <Helmet>
+              <title>Register</title>
+            </Helmet>
+            <Register />
           </Route>
           <Route exact path="/message/:status">
             <Helmet>

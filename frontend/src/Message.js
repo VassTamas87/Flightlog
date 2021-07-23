@@ -20,6 +20,8 @@ const Message = ({ prop }) => {
                 ? "Invalid username or password."
                 : status === "noaccess" || prop === "denied"
                 ? "Access Denied!!!"
+                : status === "registered"
+                ? "You have successfully registered."
                 : prop === "nodata"
                 ? "You don't have any flight record."
                 : ""}

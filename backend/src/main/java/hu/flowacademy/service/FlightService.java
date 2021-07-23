@@ -15,9 +15,8 @@ public class FlightService {
 
     private final FlightRepository flightRepository;
 
-
-    public List<FlightDto> listAll() {
-        return flightRepository.findAll().stream().map(FlightDto::toDto).collect(Collectors.toList());
+    public List<FlightDto> listAll(String userId) {
+        return flightRepository.findAllByUserId(userId).stream().map(FlightDto::toDto).collect(Collectors.toList());
     }
 
     public Flight create(Flight flight) {

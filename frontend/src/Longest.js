@@ -12,11 +12,12 @@ const format = (date) => {
 const Longest = () => {
   const [longest, setLongest] = useState(null);
   const history = useHistory();
+  const userId = localStorage.getItem("user");
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get("/api/longest", {
+        const response = await axios.get(`/api/flights/longest/${userId}`, {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),
           },

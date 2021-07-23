@@ -26,11 +26,12 @@ const Add = () => {
   const [success, setSuccess] = useState(false);
   const history = useHistory();
   const token = localStorage.getItem("token");
+  const userId = localStorage.getItem("user");
 
   const onResgistration = async ({ city, destination }) => {
     try {
       const resp = await axios.post(
-        "/api/save",
+        `/api/flights/save/${userId}`,
         {
           city,
           destination,
