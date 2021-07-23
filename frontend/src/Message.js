@@ -22,14 +22,28 @@ const Message = ({ prop }) => {
                 ? "Access Denied!!!"
                 : status === "registered"
                 ? "You have successfully registered."
+                : status === "exists"
+                ? "Username already exists!"
                 : prop === "nodata"
                 ? "You don't have any flight record."
                 : ""}
             </b>
           </h2>
-          <Link to={prop === "nodata" ? "/home" : "/"}>
+          <Link
+            to={
+              prop === "nodata"
+                ? "/home"
+                : status === "exists"
+                ? "/register"
+                : "/"
+            }
+          >
             <button className="btn btn-primary">
-              {prop === "nodata" ? "Back" : "Back To Login"}
+              {prop === "nodata"
+                ? "Back"
+                : status === "exists"
+                ? "Back"
+                : "Back To Login"}
             </button>
           </Link>
         </div>

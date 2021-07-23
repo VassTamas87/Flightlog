@@ -4,7 +4,7 @@ import { Form, Formik } from "formik";
 import MyTextField from "./MyTextField";
 import RegisterSchema from "./RegisterSchema";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 const Register = () => {
   const history = useHistory();
@@ -20,6 +20,7 @@ const Register = () => {
       history.push("/message/registered");
     } catch (error) {
       console.log(error);
+      history.push("/message/exists");
     }
   };
 
@@ -49,6 +50,9 @@ const Register = () => {
                 <button className="btn btn-primary w-100" type="submit">
                   Register
                 </button>
+                <div className="mt-2 mx-2">
+                  <Link to={"/"}>Bact To Login</Link>
+                </div>
               </Form>
             </Formik>
           </div>
