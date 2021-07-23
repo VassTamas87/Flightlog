@@ -18,7 +18,7 @@
 
 ## Login info
 
-One user with some flight data already in db:
+One user with some flight data already in db:\
 username: John Doe\
 password: g64gr3gh
 
