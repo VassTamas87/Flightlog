@@ -18,5 +18,5 @@
 
 ## Login info
 
-username: pilot
+username: pilot\
 password: g64gr3gh
