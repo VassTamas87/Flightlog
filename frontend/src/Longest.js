@@ -30,7 +30,7 @@ const Longest = () => {
       }
     }
     fetchData();
-  }, []);
+  }, [history, userId]);
 
   return !longest?.id ? (
     <Message prop={"nodata"} />

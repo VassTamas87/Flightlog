@@ -18,7 +18,14 @@ public class FlightService {
     private final FlightRepository flightRepository;
 
     public List<FlightDto> listAll(String userId) {
-        return flightRepository.findAllByUserId(userId).stream().map(FlightDto::toDto).collect(Collectors.toList());
+        return flightRepository.findAllByUserId(userId).stream().filter(flight -> !flight.isUpcoming())
+                .map(FlightDto::toDto).collect(Collectors.toList());
+    }
+
+    public Flight update(Long id) {
+        Flight temp = flightRepository.findById(id).orElseThrow();
+        log.info("Flight updated: {}", temp);
+        return flightRepository.save(temp.toBuilder().id(id).isUpcoming(!temp.isUpcoming()).build());
     }
 
     public Flight create(Flight flight) {
@@ -29,5 +36,10 @@ public class FlightService {
     public void delete(Long id) {
         log.info("Flight deleted with the id: {}", id);
         flightRepository.deleteById(id);
+    }
+
+    public List<FlightDto> upcomings(String userId) {
+        return flightRepository.findAllByUserId(userId).stream().filter(Flight::isUpcoming)
+                .map(FlightDto::toDto).collect(Collectors.toList());
     }
 }

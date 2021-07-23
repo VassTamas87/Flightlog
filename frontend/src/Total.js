@@ -24,7 +24,7 @@ const Total = () => {
       }
     }
     fetchData();
-  }, []);
+  }, [history, userId]);
 
   return (
     <>

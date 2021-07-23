@@ -30,11 +30,21 @@ public class FlightController {
         return flightService.listAll(userId);
     }
 
+    @GetMapping("/upcomings/{userId}")
+    public List<FlightDto> upcomings(@PathVariable String userId) {
+        return flightService.upcomings(userId);
+    }
+
+    @PutMapping("/update/{id}")
+    public Flight update(@PathVariable Long id) {
+        return flightService.update(id);
+    }
+
     @PostMapping("/save/{userId}")
     public Flight create(@RequestBody SaveDto saveDto, @PathVariable String userId) {
         User user = userRepository.findFirstById(userId);
         Flight flight = Flight.builder().city(saveDto.getCity()).destination(saveDto.getDestination())
-                .departure(saveDto.getDeparture()).arrival(saveDto.getArrival()).user(user).build();
+                .departure(saveDto.getDeparture()).arrival(saveDto.getArrival()).isUpcoming(true).user(user).build();
         log.info("Saved flight: {}", flight);
         return flightService.create(flight);
     }

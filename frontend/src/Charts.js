@@ -29,7 +29,7 @@ const Charts = () => {
       }
     }
     fetchData();
-  }, []);
+  }, [history, userId]);
 
   useEffect(() => {
     async function fetchData() {
@@ -50,7 +50,7 @@ const Charts = () => {
       }
     }
     fetchData();
-  }, []);
+  }, [history, userId]);
 
   return (
     <>

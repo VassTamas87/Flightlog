@@ -46,6 +46,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/flights/*").hasAnyRole("USER")
                 .antMatchers(HttpMethod.POST, "/flights/*").hasAnyRole("USER")
+                .antMatchers(HttpMethod.PUT, "/flights/*").hasAnyRole("USER")
+                .antMatchers(HttpMethod.DELETE, "/flights/*").hasAnyRole("USER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().disable();

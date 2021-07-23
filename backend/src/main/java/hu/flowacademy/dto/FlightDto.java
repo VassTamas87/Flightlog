@@ -21,6 +21,7 @@ public class FlightDto {
     private LocalDateTime departure;
     private LocalDateTime arrival;
     private Long duration;
+    private boolean isUpcoming;
 
     public static FlightDto toDto(Flight flight) {
         FlightDto flightDto = new FlightDto();
@@ -30,6 +31,7 @@ public class FlightDto {
         flightDto.setDeparture(flight.getDeparture());
         flightDto.setArrival(flight.getArrival());
         flightDto.setDuration(getTravelTime(flight.getDeparture(), flight.getArrival()));
+        flightDto.setUpcoming(flight.isUpcoming());
         return flightDto;
     }
 

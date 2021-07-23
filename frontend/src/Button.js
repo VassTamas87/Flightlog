@@ -1,22 +1,34 @@
 import React, { useState } from "react";
 
-const Button = ({ flight, remove }) => {
+const Button = ({ flight, remove, color, updateStatus }) => {
   const handleRemove = () => remove(flight);
   const handleMouseEnter = () => setIsShown(true);
   const handleMouseLeave = () => setIsShown(false);
   const [isShown, setIsShown] = useState(false);
+  const handleChange = () => updateStatus(flight);
 
   return (
     <div
-      className="list-group-item list-group-item-info"
+      className={`list-group-item list-group-item-${
+        color ? "warning" : "info"
+      }`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div>
-        <h5>
-          <b>Flight Id:</b>
-        </h5>
-        {flight.id}
+      <div className="box">
+        <div className="mx-5">
+          <input
+            type="checkbox"
+            onChange={handleChange}
+            checked={!flight.upcoming}
+          />
+        </div>
+        <div>
+          <h5>
+            <b>Flight Id:</b>
+          </h5>
+          {flight.id}
+        </div>
       </div>
       <div>
         <h5>

@@ -23,6 +23,7 @@ public class Flight {
     private String destination;
     private LocalDateTime departure;
     private LocalDateTime arrival;
+    private boolean isUpcoming;
 
     @ManyToOne
     @JoinColumn
