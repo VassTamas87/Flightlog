@@ -37,7 +37,7 @@ const Card = () => {
           <p className="card-text"></p>
           <Link to={"/flights"}>
             <button href="#" className="btn btn-primary">
-              List All My Flights
+              Manage My Flights
             </button>
           </Link>
           <p className="card-text"></p>
@@ -49,7 +49,7 @@ const Card = () => {
           <p className="card-text"></p>
           <Link to={"/longest"}>
             <button href="#" className="btn btn-primary">
-              Show The Longest Flight
+              Longest Flight With The Earliest Departure
             </button>
           </Link>
           <p className="card-text"></p>
