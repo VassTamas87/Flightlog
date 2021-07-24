@@ -59,5 +59,8 @@ public class FlightService {
         if (flight.getArrival() == null) {
             throw new ValidateException("Arrival time is missing!");
         }
+        if (flight.getCity().equals(flight.getDestination())) {
+            throw new ValidateException("Departure city and destination can't be the same!");
+        }
     }
 }
