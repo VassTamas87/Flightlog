@@ -118,9 +118,11 @@ const Flights = () => {
     <Message prop={"nodata"} />
   ) : (
     <div>
-      <div className="list-group-item list-group-item-light">
-        <StyledH1>Past Flights</StyledH1>
-      </div>
+      {flights.length > 0 && (
+        <div className="list-group-item list-group-item-light">
+          <StyledH1>Past Flights</StyledH1>
+        </div>
+      )}
       {flights.map((flight) => (
         <Button
           flight={flight}
@@ -129,9 +131,11 @@ const Flights = () => {
           key={flight.id}
         />
       ))}
-      <div className="list-group-item list-group-item-light">
-        <StyledH1>Upcoming Flights</StyledH1>
-      </div>
+      {upcomings.length > 0 && (
+        <div className="list-group-item list-group-item-light">
+          <StyledH1>Upcoming Flights</StyledH1>
+        </div>
+      )}
       {upcomings.map((flight) => (
         <Button
           flight={flight}
