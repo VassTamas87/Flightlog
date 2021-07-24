@@ -40,7 +40,6 @@ public class FlightServiceTest {
         assertThrows(ValidateException.class,
                 () -> flightService.create(
                         giveFlightWithoutDepartureTime()));
-
         assertThrows(ValidateException.class,
                 () -> flightService.create(
                         giveFlightWithoutArrivalTime()));

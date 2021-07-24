@@ -9,6 +9,7 @@ import hu.flowacademy.repository.UserRepository;
 import hu.flowacademy.service.FlightService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,6 +42,7 @@ public class FlightController {
     }
 
     @PostMapping("/save/{userId}")
+    @ResponseStatus(HttpStatus.CREATED)
     public Flight create(@RequestBody SaveDto saveDto, @PathVariable String userId) {
         User user = userRepository.findFirstById(userId);
         Flight flight = Flight.builder().city(saveDto.getCity()).destination(saveDto.getDestination())
@@ -75,6 +77,7 @@ public class FlightController {
     }
 
     @DeleteMapping("/delete/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         flightService.delete(id);
         return ResponseEntity.accepted().build();
