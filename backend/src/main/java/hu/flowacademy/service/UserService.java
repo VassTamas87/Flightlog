@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.transaction.Transactional;
 
@@ -31,6 +32,12 @@ public class UserService {
     public void validate(User user) {
         if (userRepository.findFirstByUsername(user.getUsername()).isPresent()) {
             throw new ValidateException("Username already exists!");
+        }
+        if (!StringUtils.hasText(user.getUsername())) {
+            throw new ValidateException("Username is missing!");
+        }
+        if (!StringUtils.hasText(user.getPassword())) {
+            throw new ValidateException("Password is missing!");
         }
     }
 }
