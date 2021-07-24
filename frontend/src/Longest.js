@@ -4,10 +4,16 @@ import Back from "./Back";
 import moment from "moment";
 import Message from "./Message";
 import { useHistory } from "react-router-dom";
+import styled from "styled-components";
 
 const format = (date) => {
   return moment(date).format("YYYY-MM-DD HH:mm");
 };
+
+const StyledH1 = styled.h1`
+  width: 100%;
+  text-align: center;
+`;
 
 const Longest = () => {
   const [longest, setLongest] = useState(null);
@@ -36,6 +42,9 @@ const Longest = () => {
     <Message prop={"nodata"} />
   ) : (
     <div>
+      <div className="list-group-item list-group-item-light">
+        <StyledH1>Longest Flight With The Earliest Departure</StyledH1>
+      </div>
       <div className="list-group-item list-group-item-info">
         <div>
           <h5>

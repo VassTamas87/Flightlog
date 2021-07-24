@@ -49,7 +49,7 @@ const Card = () => {
           <p className="card-text"></p>
           <Link to={"/longest"}>
             <button href="#" className="btn btn-primary">
-              Longest Flight With The Earliest Departure
+              Longest Flight
             </button>
           </Link>
           <p className="card-text"></p>
