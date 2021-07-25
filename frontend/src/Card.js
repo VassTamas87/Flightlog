@@ -72,9 +72,10 @@ const Card = () => {
           </Link>
         </div>
         <div>
-          <img src={pilot} alt="" height="75%" />
+          <img src={pilot} alt="" height="70%" />
           <h1 className="mt-2">{username}</h1>
           <h6>Senior First Officer/ Co- Pilot</h6>
+          <Link to={"/account"}>Account Settings</Link>
         </div>
       </div>
     </div>

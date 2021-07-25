@@ -11,6 +11,8 @@ import Charts from "./Charts";
 import Login from "./Login";
 import Message from "./Message";
 import Register from "./Register";
+import Account from "./Account";
+import Question from "./Question";
 
 function App() {
   return (
@@ -70,6 +72,18 @@ function App() {
               <title>Status</title>
             </Helmet>
             <Message />
+          </Route>
+          <Route exact path="/account">
+            <Helmet>
+              <title>Account</title>
+            </Helmet>
+            <Account />
+          </Route>
+          <Route exact path="/confirm/:operation">
+            <Helmet>
+              <title>Confirm</title>
+            </Helmet>
+            <Question />
           </Route>
         </Switch>
       </BrowserRouter>
