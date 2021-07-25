@@ -25,7 +25,7 @@ public class UserService {
         validate(user);
         log.info("User created with the username: {}", user.getUsername());
         return userRepository.save(user.toBuilder()
-                .password(passwordEncoder.encode(user.getPassword())).role(Role.ROLE_USER)
+                .password(passwordEncoder.encode(user.getPassword())).role(Role.USER)
                 .build());
     }
 

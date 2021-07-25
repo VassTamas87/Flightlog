@@ -34,7 +34,7 @@ public class InitDataLoader implements CommandLineRunner {
                 userRepository.save(User.builder()
                         .username("John Doe")
                         .password(passwordEncoder.encode("g64gr3gh"))
-                        .role(Role.ROLE_USER)
+                        .role(Role.USER)
                         .build())
         );
         executeFlightSave(user);

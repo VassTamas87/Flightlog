@@ -20,10 +20,12 @@ import java.io.IOException;
 public class AuthorizationFilter extends BasicAuthenticationFilter {
 
     private final UserRepository userRepository;
+    private final String hmacKey;
 
-    public AuthorizationFilter(AuthenticationManager authenticationManager, UserRepository userRepository) {
+    public AuthorizationFilter(AuthenticationManager authenticationManager, UserRepository userRepository, String hmacKey) {
         super(authenticationManager);
         this.userRepository = userRepository;
+        this.hmacKey = hmacKey;
     }
 
     @Override
@@ -35,8 +37,7 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
         authValue = authValue.replaceAll("Bearer ", "");
 
         Claims body = Jwts.parserBuilder()
-                .setSigningKey(Keys.hmacShaKeyFor(("f6cf0b0044d6f75d024aaf55a49f206be9276b9d42b6f493c229e33c9c66fb30f8f" +
-                        "410adcc1cad4b8ac346d6d8580c73ba0ee90003b0c24faf7d15c6f2bf76a5").getBytes()))
+                .setSigningKey(Keys.hmacShaKeyFor(hmacKey.getBytes()))
                 .build()
                 .parseClaimsJws(authValue)
                 .getBody();

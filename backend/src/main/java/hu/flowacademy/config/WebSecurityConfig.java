@@ -2,6 +2,7 @@ package hu.flowacademy.config;
 
 import hu.flowacademy.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -19,6 +20,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(jsr250Enabled = true, prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Value("${app.jwtHmac}")
+    private String hmacKey;
 
     @Autowired
     private UserRepository userRepository;
@@ -41,8 +45,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .cors().disable()
                 .csrf().disable()
-                .addFilter(new AuthenticationFilter(authenticationManager()))
-                .addFilter(new AuthorizationFilter(authenticationManager(), userRepository))
+                .addFilter(new AuthenticationFilter(authenticationManager(), hmacKey))
+                .addFilter(new AuthorizationFilter(authenticationManager(), userRepository, hmacKey))
                 .authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/flights/*").hasAnyRole("USER")
                 .antMatchers(HttpMethod.POST, "/flights/*").hasAnyRole("USER")

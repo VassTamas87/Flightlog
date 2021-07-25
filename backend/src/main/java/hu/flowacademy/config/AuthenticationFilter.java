@@ -28,9 +28,12 @@ import java.util.List;
 @Slf4j
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-    public AuthenticationFilter(AuthenticationManager authenticationManager) {
+    private final String hmacKey;
+
+    public AuthenticationFilter(AuthenticationManager authenticationManager, String hmacKey) {
         super(authenticationManager);
         setFilterProcessesUrl("/login");
+        this.hmacKey = hmacKey;
     }
 
     @Override
@@ -62,8 +65,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         String jwtToken = Jwts.builder()
                 .setSubject(principal.getUsername())
                 .setIssuedAt(new Date())
-                .signWith(Keys.hmacShaKeyFor(("f6cf0b0044d6f75d024aaf55a49f206be9276b9d42b6f493c229e33c9c66fb30f8f" +
-                        "410adcc1cad4b8ac346d6d8580c73ba0ee90003b0c24faf7d15c6f2bf76a5").getBytes()), SignatureAlgorithm.HS512)
+                .signWith(Keys.hmacShaKeyFor(hmacKey.getBytes()), SignatureAlgorithm.HS512)
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 30))
                 .claim("roles", principal.getAuthorities())
                 .compact();
