@@ -29,6 +29,12 @@ public class UserService {
                 .build());
     }
 
+    public void delete(String id) {
+        User user = userRepository.findFirstById(id);
+        log.info("User deleted with the username: {} and id: {}", user.getUsername(), id);
+        userRepository.deleteById(id);
+    }
+
     public void validate(User user) {
         if (userRepository.findFirstByUsername(user.getUsername()).isPresent()) {
             throw new ValidateException("Username already exists!");

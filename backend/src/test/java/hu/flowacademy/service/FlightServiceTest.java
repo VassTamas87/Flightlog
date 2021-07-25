@@ -13,10 +13,13 @@ import org.springframework.test.context.ActiveProfiles;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
+
+
 import static org.mockito.Mockito.when;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+
 
 @ActiveProfiles("test")
 @ExtendWith(MockitoExtension.class)
@@ -55,6 +58,7 @@ public class FlightServiceTest {
         Flight expectedFlight = givenValidFlight();
         Flight actualFlight = whenSavingFlight(expectedFlight);
         assertEquals(expectedFlight, actualFlight);
+        verify(flightRepository).save(any());
     }
 
     private Flight giveFlightWithoutDepartureCity() {

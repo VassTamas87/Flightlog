@@ -14,7 +14,7 @@ import org.springframework.test.context.ActiveProfiles;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @ActiveProfiles("test")
@@ -46,6 +46,7 @@ public class UserServiceTest {
         User expectedUser = givenValidUser();
         User actualUser = whenSavingUser(expectedUser);
         assertEquals(expectedUser, actualUser);
+        verify(userRepository).save(any());
     }
 
     private User giveUserWithoutUsername() {
