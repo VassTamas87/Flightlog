@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
 import axios from "axios";
+import Change from "./Change";
 
 const Question = () => {
   const { operation } = useParams();
@@ -21,15 +22,14 @@ const Question = () => {
     }
   };
 
-  return (
+  return operation !== "delete" ? (
+    <Change />
+  ) : (
     <>
       <div className="card">
         <div className="card-body">
           <h2 className="card-text">
-            <b>
-              {operation === "delete" &&
-                "Are you sure you want to delete your account?"}
-            </b>
+            <b>Are you sure you want to delete your account?</b>
           </h2>
           <button className="btn btn-primary" onClick={deleteAccount}>
             Yes

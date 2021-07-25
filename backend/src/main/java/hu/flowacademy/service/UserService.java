@@ -35,6 +35,14 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
+    public User update(String id, String username, String password) {
+        User user = userRepository.findFirstById(id);
+        log.info("User modified with id: {}", id);
+        return userRepository.save(user.toBuilder().id(id).username(username != null ? username : user.getUsername())
+                .password(password != null ? passwordEncoder.encode(password) : user.getPassword()).build());
+
+    }
+
     public void validate(User user) {
         if (userRepository.findFirstByUsername(user.getUsername()).isPresent()) {
             throw new ValidateException("Username already exists!");

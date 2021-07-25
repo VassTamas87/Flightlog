@@ -14,15 +14,9 @@ const Account = () => {
         <div>
           <h5 className="card-title">Account</h5>
           <p className="card-text"></p>
-          <Link to={"/flights"}>
+          <Link to={"/confirm/unpw"}>
             <button href="#" className="btn btn-primary">
-              Change Username
-            </button>
-          </Link>
-          <p className="card-text"></p>
-          <Link to={"/add"}>
-            <button href="#" className="btn btn-primary">
-              Change Password
+              Change Username And Password
             </button>
           </Link>
           <p className="card-text"></p>

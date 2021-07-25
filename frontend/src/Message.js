@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 const Message = ({ prop }) => {
   const { status } = useParams();
 
-  if (status === "logout" || status === "delete") {
+  if (status === "logout" || status === "delete" || status === "changed") {
     localStorage.clear();
   }
 
@@ -24,6 +24,8 @@ const Message = ({ prop }) => {
                 ? "You have successfully registered."
                 : status === "delete"
                 ? "You have successfully deleted your account."
+                : status === "changed"
+                ? "Changed successfully, log back again with the new data."
                 : status === "exists"
                 ? "Username already exists!"
                 : prop === "nodata"

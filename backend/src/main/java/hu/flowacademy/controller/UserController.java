@@ -25,6 +25,12 @@ public class UserController {
         return (User) authentication.getPrincipal();
     }
 
+    @PutMapping("/users/{id}")
+    public User updateUser(@PathVariable String id, @RequestParam(value = "username", required = false) String username,
+                           @RequestParam(value = "password", required = false) String password) {
+        return userService.update(id, username, password);
+    }
+
     @DeleteMapping("/users/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public ResponseEntity<Void> delete(@PathVariable String id) {
