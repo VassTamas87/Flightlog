@@ -26,6 +26,8 @@ const Message = ({ prop }) => {
                 ? "You have successfully deleted your account."
                 : status === "upload"
                 ? "Picture has been successfully uploaded."
+                : status === "deletepic"
+                ? "Picture has been successfully deleted."
                 : status === "changed"
                 ? "Changed successfully, log back again with the new data."
                 : status === "exists"
@@ -41,7 +43,7 @@ const Message = ({ prop }) => {
                 ? "/home"
                 : status === "exists"
                 ? "/register"
-                : status === "upload"
+                : status === "upload" || status === "deletepic"
                 ? "/account"
                 : "/"
             }
@@ -49,7 +51,9 @@ const Message = ({ prop }) => {
             <button className="btn btn-primary">
               {prop === "nodata"
                 ? "Back"
-                : status === "exists" || status === "upload"
+                : status === "exists" ||
+                  status === "upload" ||
+                  status === "deletepic"
                 ? "Back"
                 : "Back To Login"}
             </button>

@@ -3,6 +3,7 @@ import pilot from "./images/pilot.jpg";
 import { Link } from "react-router-dom";
 import Message from "./Message";
 import axios from "axios";
+import Plane from "./Plane";
 
 const userId = localStorage.getItem("user");
 const token = localStorage.getItem("token");
@@ -10,6 +11,7 @@ const token = localStorage.getItem("token");
 const Card = () => {
   const [username, setUsername] = useState("");
   const [hasImage, setHasImage] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -32,12 +34,16 @@ const Card = () => {
   useEffect(() => {
     async function fetchData() {
       try {
+        setIsLoading(true);
+        await new Promise((x) => setTimeout(x, 100));
         const response = await axios.get(`/api/picture/${userId}`);
         console.log(response);
         setHasImage(true);
+        setIsLoading(false);
       } catch (error) {
         console.error(error);
         setHasImage(false);
+        setIsLoading(false);
       }
     }
     fetchData();
@@ -45,6 +51,8 @@ const Card = () => {
 
   return !token ? (
     <Message prop={"denied"} />
+  ) : isLoading ? (
+    <Plane />
   ) : (
     <div className="card">
       <div className="card-body">
@@ -89,9 +97,9 @@ const Card = () => {
         </div>
         <div>
           <img
+            className="profile-pic"
             src={!hasImage ? pilot : `/api/picture/${userId}`}
             alt=""
-            height="70%"
           />
           <h1 className="mt-2">{username}</h1>
           <h6>Senior First Officer/ Co- Pilot</h6>

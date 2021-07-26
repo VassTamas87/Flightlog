@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
 import axios from "axios";
 
@@ -7,6 +7,20 @@ const Upload = () => {
   const userId = localStorage.getItem("user");
   const history = useHistory();
   const token = localStorage.getItem("token");
+  const [hasImage, setHasImage] = useState(false);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await axios.get(`/api/picture/${userId}`);
+        console.log(response);
+        setHasImage(true);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    fetchData();
+  }, [userId]);
 
   const removePicture = async () => {
     try {
@@ -49,11 +63,15 @@ const Upload = () => {
   return (
     <div className="card">
       <div className="card-body">
-        <form>
-          <label>
-            Upload Picture
-            <input type="file" onChange={onChange}></input>
-          </label>
+        <div>
+          <form>
+            <label>
+              Upload Picture
+              <input type="file" onChange={onChange}></input>
+            </label>
+          </form>
+        </div>
+        <div>
           <button
             type="submit"
             className="btn btn-success p-2"
@@ -61,12 +79,16 @@ const Upload = () => {
           >
             Upload
           </button>
-        </form>
-        <button className="btn btn-success p-2" onClick={removePicture}>
-          Delete Picture
-        </button>
+        </div>
+        {hasImage && (
+          <Link to={"/message/deletepic"}>
+            <button className="btn btn-success p-2" onClick={removePicture}>
+              Delete Profile Picture
+            </button>
+          </Link>
+        )}
         <Link to={"/account"}>
-          <button className="btn btn-primary">Back</button>
+          <button className="btn btn-primary mt-1">Back</button>
         </Link>
       </div>
     </div>

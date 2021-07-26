@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PictureRepository extends JpaRepository<Picture, String> {
     Picture findFirstByUserId(String userId);
+
+    void deleteAllByUserId(String userId);
 }

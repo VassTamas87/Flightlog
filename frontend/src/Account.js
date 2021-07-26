@@ -16,19 +16,13 @@ const Account = () => {
           <p className="card-text"></p>
           <Link to={"/confirm/unpw"}>
             <button href="#" className="btn btn-primary">
-              Change Username And Password
+              Change Username/Password/Rank
             </button>
           </Link>
           <p className="card-text"></p>
           <Link to={"/upload"}>
             <button href="#" className="btn btn-primary">
               Change Profile Picture
-            </button>
-          </Link>
-          <p className="card-text"></p>
-          <Link to={"/account"}>
-            <button href="#" className="btn btn-primary">
-              Change Your Rank
             </button>
           </Link>
           <p className="card-text"></p>

@@ -32,6 +32,7 @@ public class PictureStorageService {
         User user = userRepository.findFirstById(userId);
         Picture picture = new Picture(fileName, file.getContentType(), file.getBytes(), user);
         log.info("Picture has been saved with the name: {}", picture.getName());
+        delete(userId);
         return pictureRepository.save(picture);
     }
 
@@ -40,7 +41,6 @@ public class PictureStorageService {
     }
 
     public void delete(String userId) {
-        Picture picture = pictureRepository.findFirstByUserId(userId);
-        pictureRepository.delete(picture);
+        pictureRepository.deleteAllByUserId(userId);
     }
 }
