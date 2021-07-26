@@ -29,7 +29,7 @@ const Message = ({ prop }) => {
                 : status === "deletepic"
                 ? "Picture has been successfully deleted."
                 : status === "changed"
-                ? "Changed successfully, log back again with the new data."
+                ? "Changed successfully, log back again."
                 : status === "exists"
                 ? "Username already exists!"
                 : prop === "nodata"

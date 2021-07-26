@@ -5,13 +5,13 @@ import Message from "./Message";
 import axios from "axios";
 import Plane from "./Plane";
 
-const userId = localStorage.getItem("user");
-const token = localStorage.getItem("token");
-
 const Card = () => {
   const [username, setUsername] = useState("");
   const [hasImage, setHasImage] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const token = localStorage.getItem("token");
+  const userId = localStorage.getItem("user");
+  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -24,12 +24,13 @@ const Card = () => {
         console.log(response);
         setUsername(response.data.username);
         localStorage.setItem("user", response.data.id);
+        setIsReady(true);
       } catch (error) {
         console.error(error);
       }
     }
     fetchData();
-  }, []);
+  }, [token]);
 
   useEffect(() => {
     async function fetchData() {
@@ -46,8 +47,10 @@ const Card = () => {
         setIsLoading(false);
       }
     }
-    fetchData();
-  }, []);
+    if (isReady) {
+      fetchData();
+    }
+  }, [userId, isReady]);
 
   return !token ? (
     <Message prop={"denied"} />
