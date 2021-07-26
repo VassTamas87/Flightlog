@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import Message from "./Message";
 import Back from "./Back";
@@ -12,7 +12,7 @@ const Account = () => {
     <div className="card">
       <div className="card-body">
         <div>
-          <h5 className="card-title">Account</h5>
+          <h5 className="card-title">Account Settings</h5>
           <p className="card-text"></p>
           <Link to={"/confirm/unpw"}>
             <button href="#" className="btn btn-primary">
@@ -20,13 +20,13 @@ const Account = () => {
             </button>
           </Link>
           <p className="card-text"></p>
-          <Link to={"/longest"}>
+          <Link to={"/upload"}>
             <button href="#" className="btn btn-primary">
               Change Profile Picture
             </button>
           </Link>
           <p className="card-text"></p>
-          <Link to={"/longest"}>
+          <Link to={"/account"}>
             <button href="#" className="btn btn-primary">
               Change Your Rank
             </button>

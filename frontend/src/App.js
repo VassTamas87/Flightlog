@@ -1,5 +1,4 @@
 import React from "react";
-import "./App.css";
 import Card from "./Card";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Flights from "./Flights";
@@ -13,6 +12,7 @@ import Message from "./Message";
 import Register from "./Register";
 import Account from "./Account";
 import Question from "./Question";
+import Upload from "./Upload";
 
 function App() {
   return (
@@ -84,6 +84,12 @@ function App() {
               <title>Confirm</title>
             </Helmet>
             <Question />
+          </Route>
+          <Route exact path="/upload">
+            <Helmet>
+              <title>Upload</title>
+            </Helmet>
+            <Upload />
           </Route>
         </Switch>
       </BrowserRouter>

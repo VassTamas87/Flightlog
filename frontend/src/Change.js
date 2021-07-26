@@ -29,7 +29,7 @@ const Change = () => {
             ? "username=" + username + "&password=" + password
             : username.length > 0 && password.length === 0
             ? "username=" + username
-            : "&password=" + password
+            : "password=" + password
         }`,
         {},
         {

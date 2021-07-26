@@ -4,15 +4,19 @@ import { Link } from "react-router-dom";
 import Message from "./Message";
 import axios from "axios";
 
+const userId = localStorage.getItem("user");
+const token = localStorage.getItem("token");
+
 const Card = () => {
   const [username, setUsername] = useState("");
+  const [hasImage, setHasImage] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
       try {
         const response = await axios.get("/api/users/current", {
           headers: {
-            Authorization: "Bearer " + localStorage.getItem("token"),
+            Authorization: "Bearer " + token,
           },
         });
         console.log(response);
@@ -25,7 +29,19 @@ const Card = () => {
     fetchData();
   }, []);
 
-  const token = localStorage.getItem("token");
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await axios.get(`/api/picture/${userId}`);
+        console.log(response);
+        setHasImage(true);
+      } catch (error) {
+        console.error(error);
+        setHasImage(false);
+      }
+    }
+    fetchData();
+  }, []);
 
   return !token ? (
     <Message prop={"denied"} />
@@ -72,7 +88,11 @@ const Card = () => {
           </Link>
         </div>
         <div>
-          <img src={pilot} alt="" height="70%" />
+          <img
+            src={!hasImage ? pilot : `/api/picture/${userId}`}
+            alt=""
+            height="70%"
+          />
           <h1 className="mt-2">{username}</h1>
           <h6>Senior First Officer/ Co- Pilot</h6>
           <Link to={"/account"}>Account Settings</Link>

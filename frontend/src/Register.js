@@ -1,4 +1,3 @@
-import "./App.css";
 import React from "react";
 import { Form, Formik } from "formik";
 import MyTextField from "./MyTextField";

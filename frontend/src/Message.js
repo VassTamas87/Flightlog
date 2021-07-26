@@ -24,6 +24,8 @@ const Message = ({ prop }) => {
                 ? "You have successfully registered."
                 : status === "delete"
                 ? "You have successfully deleted your account."
+                : status === "upload"
+                ? "Picture has been successfully uploaded."
                 : status === "changed"
                 ? "Changed successfully, log back again with the new data."
                 : status === "exists"
@@ -39,13 +41,15 @@ const Message = ({ prop }) => {
                 ? "/home"
                 : status === "exists"
                 ? "/register"
+                : status === "upload"
+                ? "/account"
                 : "/"
             }
           >
             <button className="btn btn-primary">
               {prop === "nodata"
                 ? "Back"
-                : status === "exists"
+                : status === "exists" || status === "upload"
                 ? "Back"
                 : "Back To Login"}
             </button>
