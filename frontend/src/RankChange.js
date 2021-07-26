@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, Formik } from "formik";
-import RankSchema from "./RankSchema";
+import { RankSchema } from "./Schemas";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import Ranks from "./Ranks";
@@ -44,12 +44,7 @@ const RankChange = () => {
               onSubmit={onResgistration}
             >
               <Form>
-                <Field
-                  name="position"
-                  component="select"
-                  className="mb-3"
-                  label="Rank"
-                >
+                <Field name="position" component="select" className="mb-3">
                   <Ranks />
                 </Field>
                 <button className="btn btn-primary w-100 mt-3" type="submit">

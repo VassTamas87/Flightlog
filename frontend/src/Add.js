@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form, Formik } from "formik";
 import MyTextField from "./MyTextField";
-import AddSchema from "./AddSchema";
+import { AddSchema } from "./Schemas";
 import axios from "axios";
 import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";

@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Formik } from "formik";
 import MyTextField from "./MyTextField";
-import ChangeSchema from "./ChangeSchema";
+import { ChangeSchema } from "./Schemas";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import BackLink from "./BackLink";
