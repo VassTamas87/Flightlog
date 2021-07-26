@@ -38,6 +38,10 @@ public class User implements UserDetails {
     private Role role;
 
     @JsonIgnore
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private Picture picture;
+
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Flight> flights;
 
