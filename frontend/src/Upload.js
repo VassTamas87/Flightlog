@@ -2,6 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
 import axios from "axios";
 
+const validateFile = (file) => {
+  let split = file.name.split(".");
+  return ["jpg", "jpeg", "png", "bmp"].includes(split[1]);
+};
+
 const Upload = () => {
   const [file, setFile] = useState(null);
   const userId = localStorage.getItem("user");
@@ -72,13 +77,15 @@ const Upload = () => {
           </form>
         </div>
         <div>
-          <button
-            type="submit"
-            className="btn btn-success p-2"
-            onClick={(e) => submit(e)}
-          >
-            Upload
-          </button>
+          {file && validateFile(file) && (
+            <button
+              type="submit"
+              className="btn btn-success p-2"
+              onClick={(e) => submit(e)}
+            >
+              Upload
+            </button>
+          )}
         </div>
         {hasImage && (
           <Link to={"/message/deletepic"}>

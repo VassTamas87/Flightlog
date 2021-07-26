@@ -35,7 +35,7 @@ const Card = () => {
     async function fetchData() {
       try {
         setIsLoading(true);
-        await new Promise((x) => setTimeout(x, 100));
+        await new Promise((x) => setTimeout(x, 500));
         const response = await axios.get(`/api/picture/${userId}`);
         console.log(response);
         setHasImage(true);
