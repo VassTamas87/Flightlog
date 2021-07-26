@@ -6,6 +6,7 @@ const RegisterSchema = Yup.object().shape({
   passwconf: Yup.string()
     .oneOf([Yup.ref("password")], "The passwords entered don't match!")
     .required("Required"),
+  position: Yup.string().required("Required"),
 });
 
 export default RegisterSchema;

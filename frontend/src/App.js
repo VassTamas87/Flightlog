@@ -13,6 +13,7 @@ import Register from "./Register";
 import Account from "./Account";
 import Question from "./Question";
 import Upload from "./Upload";
+import RankChange from "./RankChange";
 
 function App() {
   return (
@@ -90,6 +91,12 @@ function App() {
               <title>Upload</title>
             </Helmet>
             <Upload />
+          </Route>
+          <Route exact path="/rank">
+            <Helmet>
+              <title>Rank</title>
+            </Helmet>
+            <RankChange />
           </Route>
         </Switch>
       </BrowserRouter>

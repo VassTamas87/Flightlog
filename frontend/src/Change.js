@@ -3,13 +3,8 @@ import { Form, Formik } from "formik";
 import MyTextField from "./MyTextField";
 import ChangeSchema from "./ChangeSchema";
 import axios from "axios";
-import { useHistory, Link } from "react-router-dom";
-import styled from "styled-components";
-
-const StyledDiv = styled.div`
-  text-align: right;
-  float: right;
-`;
+import { useHistory } from "react-router-dom";
+import BackLink from "./BackLink";
 
 const Change = () => {
   const userId = localStorage.getItem("user");
@@ -83,9 +78,7 @@ const Change = () => {
                       Change
                     </button>
                   )}
-                  <StyledDiv className="mt-2 mx-2">
-                    <Link to={"/account"}>Bact To Account</Link>
-                  </StyledDiv>
+                  <BackLink prop={"account"} />
                 </Form>
               )}
             </Formik>

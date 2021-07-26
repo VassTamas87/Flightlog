@@ -7,6 +7,7 @@ import Plane from "./Plane";
 
 const Card = () => {
   const [username, setUsername] = useState("");
+  const [rank, setRank] = useState("");
   const [hasImage, setHasImage] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const token = localStorage.getItem("token");
@@ -16,6 +17,7 @@ const Card = () => {
   useEffect(() => {
     async function fetchData() {
       try {
+        setIsLoading(true);
         const response = await axios.get("/api/users/current", {
           headers: {
             Authorization: "Bearer " + token,
@@ -23,6 +25,7 @@ const Card = () => {
         });
         console.log(response);
         setUsername(response.data.username);
+        setRank(response.data.position);
         localStorage.setItem("user", response.data.id);
         setIsReady(true);
       } catch (error) {
@@ -35,7 +38,6 @@ const Card = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        setIsLoading(true);
         await new Promise((x) => setTimeout(x, 500));
         const response = await axios.get(`/api/picture/${userId}`);
         console.log(response);
@@ -105,7 +107,7 @@ const Card = () => {
             alt=""
           />
           <h1 className="mt-2">{username}</h1>
-          <h6>Senior First Officer/ Co- Pilot</h6>
+          <h6>{rank}</h6>
           <Link to={"/account"}>Account Settings</Link>
         </div>
       </div>

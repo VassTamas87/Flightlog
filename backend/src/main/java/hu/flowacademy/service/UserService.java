@@ -35,11 +35,12 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-    public User update(String id, String username, String password) {
+    public User update(String id, String username, String password, String position) {
         User user = userRepository.findFirstById(id);
         log.info("User modified with id: {}", id);
         return userRepository.save(user.toBuilder().id(id).username(username != null ? username : user.getUsername())
-                .password(password != null ? passwordEncoder.encode(password) : user.getPassword()).build());
+                .password(password != null ? passwordEncoder.encode(password) : user.getPassword())
+                .position(position != null ? position : user.getPosition()).build());
 
     }
 

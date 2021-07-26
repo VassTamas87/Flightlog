@@ -1,34 +1,32 @@
 import React from "react";
 import { Form, Formik } from "formik";
-import MyTextField from "./MyTextField";
-import RegisterSchema from "./RegisterSchema";
+import RankSchema from "./RankSchema";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import Ranks from "./Ranks";
 import Field from "./Field";
 import BackLink from "./BackLink";
 
-const Register = () => {
+const RankChange = () => {
   const history = useHistory();
+  const userId = localStorage.getItem("user");
+  const token = localStorage.getItem("token");
 
-  const onResgistration = async ({
-    username,
-    password,
-    passwconf,
-    position,
-  }) => {
+  const onResgistration = async ({ position }) => {
     try {
-      const resp = await axios.post("/api/users", {
-        username,
-        password,
-        passwconf,
-        position,
-      });
+      const resp = await axios.put(
+        `/api/users/${userId}?position=${position}`,
+        {},
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
       console.log(resp);
-      history.push("/message/registered");
+      history.push("/message/rank");
     } catch (error) {
       console.log(error);
-      history.push("/message/exists");
     }
   };
 
@@ -37,25 +35,15 @@ const Register = () => {
       <div className="container mt-5">
         <div className="row justify-content-center">
           <div className="col-12 col-md-8 col-lg-6">
-            <h1>Register</h1>
+            <h1>Change Rank</h1>
             <Formik
               initialValues={{
-                username: "",
-                password: "",
-                passwconf: "",
                 position: "",
               }}
-              validationSchema={RegisterSchema}
+              validationSchema={RankSchema}
               onSubmit={onResgistration}
             >
               <Form>
-                <MyTextField name="username" type="text" label="Username" />
-                <MyTextField name="password" type="password" label="Password" />
-                <MyTextField
-                  name="passwconf"
-                  type="password"
-                  label="Confirm Password"
-                />
                 <Field
                   name="position"
                   component="select"
@@ -65,9 +53,9 @@ const Register = () => {
                   <Ranks />
                 </Field>
                 <button className="btn btn-primary w-100 mt-3" type="submit">
-                  Register
+                  Change
                 </button>
-                <BackLink />
+                <BackLink prop={"account"} />
               </Form>
             </Formik>
           </div>
@@ -77,4 +65,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default RankChange;

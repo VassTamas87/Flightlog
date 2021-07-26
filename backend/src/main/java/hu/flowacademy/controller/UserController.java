@@ -27,8 +27,9 @@ public class UserController {
 
     @PutMapping("/users/{id}")
     public User updateUser(@PathVariable String id, @RequestParam(value = "username", required = false) String username,
-                           @RequestParam(value = "password", required = false) String password) {
-        return userService.update(id, username, password);
+                           @RequestParam(value = "password", required = false) String password,
+                           @RequestParam(value = "position", required = false) String position) {
+        return userService.update(id, username, password, position);
     }
 
     @DeleteMapping("/users/{id}")
