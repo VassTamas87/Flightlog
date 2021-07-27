@@ -22,7 +22,9 @@ const Question = () => {
     }
   };
 
-  return operation !== "delete" ? (
+  return !token ? (
+    <Message prop={"denied"} />
+  ) : operation !== "delete" ? (
     <Change />
   ) : (
     <>

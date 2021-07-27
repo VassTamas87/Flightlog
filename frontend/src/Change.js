@@ -40,7 +40,9 @@ const Change = () => {
     }
   };
 
-  return (
+  return !token ? (
+    <Message prop={"denied"} />
+  ) : (
     <div>
       <div className="container mt-5">
         <div className="row justify-content-center">

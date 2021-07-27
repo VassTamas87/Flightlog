@@ -65,7 +65,9 @@ const Upload = () => {
     }
   };
 
-  return (
+  return !token ? (
+    <Message prop={"denied"} />
+  ) : (
     <div className="card">
       <div className="card-body">
         <div>
