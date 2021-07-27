@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
 import axios from "axios";
 import Change from "./Change";
+import Message from "./Message";
 
 const Question = () => {
   const { operation } = useParams();

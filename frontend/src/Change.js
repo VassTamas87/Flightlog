@@ -5,6 +5,7 @@ import { ChangeSchema } from "./Schemas";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import BackLink from "./BackLink";
+import Message from "./Message";
 
 const Change = () => {
   const userId = localStorage.getItem("user");

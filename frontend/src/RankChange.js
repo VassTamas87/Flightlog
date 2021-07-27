@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 import Ranks from "./Ranks";
 import Field from "./Field";
 import BackLink from "./BackLink";
+import Message from "./Message";
 
 const RankChange = () => {
   const history = useHistory();
