@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { getDistance, convertDistance } from "geolib";
+import moment from "moment";
+import duration from "moment-duration-format";
+
+const format = (date) => {
+  return moment.duration(date, "milliseconds").format("hh:mm");
+};
 
 const Button = ({ flight, remove, color, updateStatus }) => {
   const handleRemove = () => remove(flight);
@@ -103,6 +109,12 @@ const Button = ({ flight, remove, color, updateStatus }) => {
             <b>Arrival Time:</b>
           </h5>
           {flight.arrival}
+        </div>
+        <div>
+          <h5>
+            <b>Duration:</b>
+          </h5>
+          {format(flight.duration)}
         </div>
         <div>
           <h5>

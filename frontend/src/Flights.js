@@ -57,7 +57,10 @@ const Flights = () => {
             arrival: format(el.arrival),
           };
         });
-        setUpcomings(mappedResult);
+        const sorted = mappedResult.sort(function (a, b) {
+          return new Date(a.departure) - new Date(b.departure);
+        });
+        setUpcomings(sorted);
         console.log(response);
       } catch (error) {
         console.error(error);
@@ -81,11 +84,15 @@ const Flights = () => {
       if (flight.upcoming) {
         setUpcomings(upcomings.filter((el) => el.id !== flight.id));
         const newFlights = [...flights, { ...flight, upcoming: false }];
-        setFlights(newFlights);
+        const sorted = newFlights.sort((a, b) => a.id - b.id);
+        setFlights(sorted);
       } else {
         setFlights(flights.filter((el) => el.id !== flight.id));
         const newUpcomings = [...upcomings, { ...flight, upcoming: true }];
-        setUpcomings(newUpcomings);
+        const sorted = newUpcomings.sort(function (a, b) {
+          return new Date(a.departure) - new Date(b.departure);
+        });
+        setUpcomings(sorted);
       }
     } catch (err) {
       console.log(err);
