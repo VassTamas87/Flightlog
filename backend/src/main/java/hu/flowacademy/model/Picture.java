@@ -25,8 +25,9 @@ public class Picture {
 
     private String type;
 
+    @ManyToOne
+    @JoinColumn
     @JsonIgnore
-    @OneToOne
     private User user;
 
     @Lob

@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { getDistance, convertDistance } from "geolib";
 
 const Button = ({ flight, remove, color, updateStatus }) => {
   const handleRemove = () => remove(flight);
@@ -6,60 +8,115 @@ const Button = ({ flight, remove, color, updateStatus }) => {
   const handleMouseLeave = () => setIsShown(false);
   const [isShown, setIsShown] = useState(false);
   const handleChange = () => updateStatus(flight);
+  const [departureCity, setDepartureCity] = useState(null);
+  const [destinationCity, setDestinationCity] = useState(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await axios.get(
+          `http://api.geonames.org/searchJSON?q=${flight.city}&maxRows=1&username=VassTamas87`
+        );
+        console.log(response);
+        setDepartureCity(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await axios.get(
+          `http://api.geonames.org/searchJSON?q=${flight.destination}&maxRows=1&username=VassTamas87`
+        );
+        console.log(response);
+        setDestinationCity(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    fetchData();
+  }, []);
+
+  const distance =
+    departureCity !== null &&
+    destinationCity !== null &&
+    getDistance(
+      {
+        latitude: departureCity.geonames[0].lat,
+        longitude: departureCity.geonames[0].lng,
+      },
+      {
+        latitude: destinationCity.geonames[0].lat,
+        longitude: destinationCity.geonames[0].lng,
+      }
+    );
 
   return (
-    <div
-      className={`list-group-item list-group-item-${
-        color ? "warning" : "info"
-      }`}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      <div className="box">
-        <div className="mx-5">
-          <input
-            type="checkbox"
-            onChange={handleChange}
-            checked={!flight.upcoming}
-          />
+    departureCity !== null &&
+    destinationCity !== null && (
+      <div
+        className={`list-group-item list-group-item-${
+          color ? "warning" : "info"
+        }`}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <div className="box">
+          <div className="mx-5">
+            <input
+              type="checkbox"
+              onChange={handleChange}
+              checked={!flight.upcoming}
+            />
+          </div>
+          <div>
+            <h5>
+              <b>Flight Id:</b>
+            </h5>
+            {flight.id}
+          </div>
         </div>
         <div>
           <h5>
-            <b>Flight Id:</b>
+            <b>Departure City:</b>
           </h5>
-          {flight.id}
+          {flight.city}
         </div>
+        <div>
+          <h5>
+            <b>Destination City:</b>
+          </h5>
+          {flight.destination}
+        </div>
+        <div>
+          <h5>
+            <b>Departure Time:</b>
+          </h5>
+          {flight.departure}
+        </div>
+        <div>
+          <h5>
+            <b>Arrival Time:</b>
+          </h5>
+          {flight.arrival}
+        </div>
+        <div>
+          <h5>
+            <b>Distance:</b>
+          </h5>
+          {convertDistance(distance, "km").toFixed(0)} km
+        </div>
+        {isShown && (
+          <button onClick={handleRemove} className="btn btn-danger">
+            Delete
+          </button>
+        )}
       </div>
-      <div>
-        <h5>
-          <b>Departure City:</b>
-        </h5>
-        {flight.city}
-      </div>
-      <div>
-        <h5>
-          <b>Destination City:</b>
-        </h5>
-        {flight.destination}
-      </div>
-      <div>
-        <h5>
-          <b>Departure Time:</b>
-        </h5>
-        {flight.departure}
-      </div>
-      <div>
-        <h5>
-          <b>Arrival Time:</b>
-        </h5>
-        {flight.arrival}
-      </div>
-      {isShown && (
-        <button onClick={handleRemove} className="btn btn-danger">
-          Delete
-        </button>
-      )}
-    </div>
+    )
   );
 };
 

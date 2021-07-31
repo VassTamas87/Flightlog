@@ -1,7 +1,6 @@
 package hu.flowacademy.service;
 
 import java.io.IOException;
-
 import java.util.Objects;
 
 import hu.flowacademy.model.Picture;
