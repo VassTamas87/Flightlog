@@ -11,6 +11,8 @@ import Successful from "./Successful";
 import Back from "./Back";
 import { useHistory } from "react-router-dom";
 import Message from "./Message";
+import Field from "./Field";
+import Planes from "./Planes";
 
 const format = (date) => {
   return moment(date).format("YYYY-MM-DD HH:mm");
@@ -28,7 +30,7 @@ const Add = () => {
   const token = localStorage.getItem("token");
   const userId = localStorage.getItem("user");
 
-  const onResgistration = async ({ city, destination }) => {
+  const onResgistration = async ({ city, destination, plane }) => {
     try {
       const resp = await axios.post(
         `/api/flights/save/${userId}`,
@@ -37,6 +39,7 @@ const Add = () => {
           destination,
           departure,
           arrival,
+          plane,
         },
         {
           headers: {
@@ -68,6 +71,7 @@ const Add = () => {
               initialValues={{
                 city: "",
                 destination: "",
+                plane: "",
               }}
               validationSchema={AddSchema}
               onSubmit={onResgistration}
@@ -88,18 +92,26 @@ const Add = () => {
                     value={departure}
                     onChange={(e) => setDeparture(format(e))}
                   />
-                  <label className="mb-2">Arrival Time</label>
+                  <label className="mb-2">
+                    Arrival Time (arrival time must be later than departure
+                    time)
+                  </label>
                   <Datetime
                     dateFormat="YYYY-MM-DD"
                     locale="en-gb"
                     value={arrival}
                     onChange={(e) => setArrival(format(e))}
                   />
+                  <label className="mt-3">Plane</label>
+                  <Field name="plane" component="select">
+                    <Planes />
+                  </Field>
                   {values.city.length > 0 &&
                     values.destination.length > 0 &&
                     departure.length > 0 &&
                     arrival.length > 0 &&
-                    isValidArrival(arrival, departure) && (
+                    isValidArrival(arrival, departure) &&
+                    values.plane.length > 1 && (
                       <button
                         onClick={() =>
                           setTimeout(() => {

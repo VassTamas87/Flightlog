@@ -5,9 +5,14 @@ import moment from "moment";
 import Message from "./Message";
 import { useHistory } from "react-router-dom";
 import FlightsTitle from "./FlightsTitle";
+import duration from "moment-duration-format";
 
 const format = (date) => {
   return moment(date).format("YYYY-MM-DD HH:mm");
+};
+
+const millFormat = (date) => {
+  return moment.duration(date, "milliseconds").format("hh:mm", { trim: false });
 };
 
 const Longest = () => {
@@ -47,6 +52,12 @@ const Longest = () => {
         </div>
         <div>
           <h5>
+            <b>Plane:</b>
+          </h5>
+          {longest.plane}
+        </div>
+        <div>
+          <h5>
             <b>Departure City:</b>
           </h5>
           {longest.city}
@@ -68,6 +79,12 @@ const Longest = () => {
             <b>Arrival Time:</b>
           </h5>
           {format(longest.arrival)}
+        </div>
+        <div>
+          <h5>
+            <b>Duration:</b>
+          </h5>
+          {millFormat(longest.duration)}
         </div>
       </div>
       <Back />

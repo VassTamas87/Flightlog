@@ -24,6 +24,7 @@ public class Flight {
     private LocalDateTime departure;
     private LocalDateTime arrival;
     private boolean isUpcoming;
+    private String plane;
 
     @ManyToOne
     @JoinColumn

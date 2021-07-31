@@ -5,7 +5,7 @@ import moment from "moment";
 import duration from "moment-duration-format";
 
 const format = (date) => {
-  return moment.duration(date, "milliseconds").format("hh:mm");
+  return moment.duration(date, "milliseconds").format("hh:mm", { trim: false });
 };
 
 const Button = ({ flight, remove, color, updateStatus }) => {
@@ -30,7 +30,7 @@ const Button = ({ flight, remove, color, updateStatus }) => {
       }
     }
     fetchData();
-  }, []);
+  }, [flight.city]);
 
   useEffect(() => {
     async function fetchData() {
@@ -45,7 +45,7 @@ const Button = ({ flight, remove, color, updateStatus }) => {
       }
     }
     fetchData();
-  }, []);
+  }, [flight.destination]);
 
   const distance =
     departureCity !== null &&
@@ -85,6 +85,12 @@ const Button = ({ flight, remove, color, updateStatus }) => {
             </h5>
             {flight.id}
           </div>
+        </div>
+        <div>
+          <h5>
+            <b>Plane:</b>
+          </h5>
+          {flight.plane}
         </div>
         <div>
           <h5>

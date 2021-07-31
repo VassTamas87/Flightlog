@@ -5,6 +5,7 @@ export const AddSchema = Yup.object().shape({
   destination: Yup.string()
     .notOneOf([Yup.ref("city")], "Departure and destination can't be the same!")
     .required("Required"),
+  plane: Yup.string().required("Required"),
 });
 
 export const ChangeSchema = Yup.object().shape({

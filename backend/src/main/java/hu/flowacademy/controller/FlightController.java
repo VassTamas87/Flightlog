@@ -46,7 +46,8 @@ public class FlightController {
     public Flight create(@RequestBody SaveDto saveDto, @PathVariable String userId) {
         User user = userRepository.findFirstById(userId);
         Flight flight = Flight.builder().city(saveDto.getCity()).destination(saveDto.getDestination())
-                .departure(saveDto.getDeparture()).arrival(saveDto.getArrival()).isUpcoming(true).user(user).build();
+                .departure(saveDto.getDeparture()).arrival(saveDto.getArrival()).isUpcoming(true)
+                .plane(saveDto.getPlane()).user(user).build();
         log.info("Saved flight: {}", flight);
         return flightService.create(flight);
     }
