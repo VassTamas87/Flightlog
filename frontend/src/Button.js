@@ -3,6 +3,9 @@ import axios from "axios";
 import { getDistance, convertDistance } from "geolib";
 import moment from "moment";
 import duration from "moment-duration-format";
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
+import Forecast from "./Forecast";
 
 const format = (date) => {
   return moment.duration(date, "milliseconds").format("hh:mm", { trim: false });
@@ -103,6 +106,22 @@ const Button = ({ flight, remove, color, updateStatus }) => {
             <b>Destination City:</b>
           </h5>
           {flight.destination}
+        </div>
+        <div>
+          <h5>
+            <b>Weather Forecast:</b>
+          </h5>
+          <div>
+            <Popup trigger={<a href="#">Show</a>} position="right top">
+              <div className="wrapper">
+                <Forecast
+                  label={flight.destination}
+                  lat={destinationCity.geonames[0].lat}
+                  lon={destinationCity.geonames[0].lng}
+                />
+              </div>
+            </Popup>
+          </div>
         </div>
         <div>
           <h5>

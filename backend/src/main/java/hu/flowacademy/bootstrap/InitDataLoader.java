@@ -81,13 +81,13 @@ public class InitDataLoader implements CommandLineRunner {
                 .plane("Boeing 747-800").user(user).build();
         list.add(flight7);
         Flight flight8 = Flight.builder().city("Vienna").destination("Berlin")
-                .departure(LocalDateTime.parse("2021-08-08 13:45", formatter))
-                .arrival(LocalDateTime.parse("2021-08-09 19:05", formatter)).isUpcoming(false)
+                .departure(LocalDateTime.parse("2020-08-08 13:45", formatter))
+                .arrival(LocalDateTime.parse("2020-08-09 19:05", formatter)).isUpcoming(false)
                 .plane("Airbus A330-300").user(user).build();
         list.add(flight8);
         Flight flight9 = Flight.builder().city("Berlin").destination("Munich")
-                .departure(LocalDateTime.parse("2021-12-23 04:45", formatter))
-                .arrival(LocalDateTime.parse("2021-12-23 13:45", formatter)).isUpcoming(false)
+                .departure(LocalDateTime.parse("2020-12-23 04:45", formatter))
+                .arrival(LocalDateTime.parse("2020-12-23 13:45", formatter)).isUpcoming(false)
                 .plane("Airbus A321neo").user(user).build();
         list.add(flight9);
         Flight flight10 = Flight.builder().city("Munich").destination("Vienna")

@@ -121,3 +121,9 @@ input[type="checkbox"] {
   max-width: 277px;
   height: auto;
 }
+
+.wrapper > div > div {
+  width: 484px !important;
+  padding: 24px !important;
+  border-radius: 10px;
+}
