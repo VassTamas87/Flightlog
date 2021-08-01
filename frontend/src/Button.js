@@ -107,22 +107,24 @@ const Button = ({ flight, remove, color, updateStatus }) => {
           </h5>
           {flight.destination}
         </div>
-        <div>
-          <h5>
-            <b>Weather Forecast:</b>
-          </h5>
+        {flight.upcoming && (
           <div>
-            <Popup trigger={<a href="#">Show</a>} position="right top">
-              <div className="wrapper">
-                <Forecast
-                  label={flight.destination}
-                  lat={destinationCity.geonames[0].lat}
-                  lon={destinationCity.geonames[0].lng}
-                />
-              </div>
-            </Popup>
+            <h5>
+              <b>Weather Forecast:</b>
+            </h5>
+            <div>
+              <Popup trigger={<a href="#">Show</a>} position="right top">
+                <div className="wrapper">
+                  <Forecast
+                    label={flight.destination}
+                    lat={destinationCity.geonames[0].lat}
+                    lon={destinationCity.geonames[0].lng}
+                  />
+                </div>
+              </Popup>
+            </div>
           </div>
-        </div>
+        )}
         <div>
           <h5>
             <b>Departure Time:</b>
