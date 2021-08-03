@@ -2,6 +2,7 @@ package hu.flowacademy.controller;
 
 import hu.flowacademy.dto.CitiesDto;
 import hu.flowacademy.dto.FlightDto;
+import hu.flowacademy.dto.MapDto;
 import hu.flowacademy.dto.SaveDto;
 import hu.flowacademy.model.Flight;
 import hu.flowacademy.model.User;
@@ -34,6 +35,11 @@ public class FlightController {
     @GetMapping("/upcomings/{userId}")
     public List<FlightDto> upcomings(@PathVariable String userId) {
         return flightService.upcomings(userId);
+    }
+
+    @GetMapping("/maproutes/{userId}")
+    public List<MapDto> mapRoutes(@PathVariable String userId) {
+        return flightService.listAll(userId).stream().map(MapDto::toDto).collect(Collectors.toList());
     }
 
     @PutMapping("/update/{id}")

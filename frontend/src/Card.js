@@ -88,6 +88,12 @@ const Card = () => {
             </button>
           </Link>
           <p className="card-text"></p>
+          <Link to={"/map"}>
+            <button href="#" className="btn btn-primary">
+              Flight Routes
+            </button>
+          </Link>
+          <p className="card-text"></p>
           <Link to={"/charts"}>
             <button href="#" className="btn btn-primary">
               Flight Charts

@@ -14,6 +14,7 @@ import Account from "./Account";
 import Question from "./Question";
 import Upload from "./Upload";
 import RankChange from "./RankChange";
+import Map from "./Map";
 
 function App() {
   return (
@@ -97,6 +98,12 @@ function App() {
               <title>Rank</title>
             </Helmet>
             <RankChange />
+          </Route>
+          <Route exact path="/map">
+            <Helmet>
+              <title>Map</title>
+            </Helmet>
+            <Map />
           </Route>
         </Switch>
       </BrowserRouter>
