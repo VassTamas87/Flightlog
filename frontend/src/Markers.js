@@ -1,4 +1,4 @@
-import { Marker, Popup } from "react-leaflet";
+import { Marker, Popup, Polyline } from "react-leaflet";
 import PlaneIcon from "./PlaneIcon";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
@@ -58,6 +58,12 @@ export default function MarkerWithPopup({ route }) {
         >
           <Popup>{route.destination}</Popup>
         </Marker>
+        <Polyline
+          positions={[
+            [departureCity.geonames[0].lat, departureCity.geonames[0].lng],
+            [destinationCity.geonames[0].lat, destinationCity.geonames[0].lng],
+          ]}
+        />
       </>
     )
   );
