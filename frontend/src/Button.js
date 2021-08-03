@@ -113,7 +113,10 @@ const Button = ({ flight, remove, color, updateStatus }) => {
               <b>Weather Forecast:</b>
             </h5>
             <div>
-              <Popup trigger={<a href="#">Show</a>} position="right top">
+              <Popup
+                trigger={<button className="btn btn-secondary">Show</button>}
+                position="right top"
+              >
                 <div className="wrapper">
                   <Forecast
                     label={flight.destination}
