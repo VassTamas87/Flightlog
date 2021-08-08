@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import pilot from "./images/pilot.jpg";
+import pilot from "../assets/pilot.jpg";
 import { Link } from "react-router-dom";
 import Message from "./Message";
 import axios from "axios";
-import Plane from "./Plane";
+import Plane from "../assets/Plane";
 
 const Card = () => {
   const [username, setUsername] = useState("");

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Plane from "./Plane";
+import Plane from "../assets/Plane";
 
 const Successful = ({ setSuccess }) => {
   const [loading, setLoading] = useState(true);

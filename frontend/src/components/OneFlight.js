@@ -11,7 +11,7 @@ const format = (date) => {
   return moment.duration(date, "milliseconds").format("hh:mm", { trim: false });
 };
 
-const Button = ({ flight, remove, color, updateStatus }) => {
+const OneFlight = ({ flight, remove, color, updateStatus }) => {
   const handleRemove = () => remove(flight);
   const handleMouseEnter = () => setIsShown(true);
   const handleMouseLeave = () => setIsShown(false);
@@ -162,4 +162,4 @@ const Button = ({ flight, remove, color, updateStatus }) => {
   );
 };
 
-export default Button;
+export default OneFlight;

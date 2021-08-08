@@ -1,5 +1,5 @@
 import L from "leaflet";
-import PlaneIcon from "./images/plane.ico";
+import PlaneIcon from "../assets/plane.ico";
 
 const UserIcon = new L.icon({
   iconUrl: PlaneIcon,

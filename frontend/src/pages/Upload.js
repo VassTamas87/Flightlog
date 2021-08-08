@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
 import axios from "axios";
-import Message from "./Message";
+import Message from "../pages/Message";
 
 const validateFile = (file) => {
   let split = file.name.split(".");

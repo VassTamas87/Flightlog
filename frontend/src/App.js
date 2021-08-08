@@ -1,20 +1,20 @@
 import React from "react";
-import Card from "./Card";
+import Card from "./pages/Card";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Flights from "./Flights";
-import Longest from "./Longest";
-import Total from "./Total";
-import Add from "./Add";
+import Flights from "./pages/Flights";
+import Longest from "./pages/Longest";
+import Total from "./pages/Total";
+import Add from "./pages/Add";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import Charts from "./Charts";
-import Login from "./Login";
-import Message from "./Message";
-import Register from "./Register";
-import Account from "./Account";
-import Question from "./Question";
-import Upload from "./Upload";
-import RankChange from "./RankChange";
-import Map from "./Map";
+import Charts from "./pages/Charts";
+import Login from "./pages/Login";
+import Message from "./pages/Message";
+import Register from "./pages/Register";
+import Account from "./pages/Account";
+import Question from "./pages/Question";
+import Upload from "./pages/Upload";
+import RankChange from "./pages/RankChange";
+import Map from "./pages/Map";
 
 function App() {
   return (

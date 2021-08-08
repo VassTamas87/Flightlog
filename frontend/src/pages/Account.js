@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Message from "./Message";
-import Back from "./Back";
+import Message from "../pages/Message";
+import Back from "../components/buttons/Back";
 
 const Account = () => {
   const token = localStorage.getItem("token");

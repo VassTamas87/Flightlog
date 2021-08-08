@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Back from "./Back";
+import Back from "../components/buttons/Back";
 import moment from "moment";
 import Message from "./Message";
 import { useHistory } from "react-router-dom";
-import FlightsTitle from "./FlightsTitle";
+import FlightsTitle from "../components/FlightsTitle";
 import duration from "moment-duration-format";
 
 const format = (date) => {

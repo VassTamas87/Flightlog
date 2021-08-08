@@ -1,9 +1,9 @@
 import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import Back from "./Back";
+import Back from "../components/buttons/Back";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Markers from "./Markers";
+import Markers from "../components/Markers";
 
 const Map = () => {
   const position = [48.1, 20.78333];

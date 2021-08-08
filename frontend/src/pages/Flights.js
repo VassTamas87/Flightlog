@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Back from "./Back";
+import Back from "../components/buttons/Back";
 import moment from "moment";
-import Button from "./Button";
+import OneFlight from "../components/OneFlight";
 import Message from "./Message";
 import { useHistory } from "react-router-dom";
-import FlightsTitle from "./FlightsTitle";
+import FlightsTitle from "../components/FlightsTitle";
 
 const format = (date) => {
   return moment(date).format("YYYY-MM-DD HH:mm");
@@ -122,7 +122,7 @@ const Flights = () => {
     <div>
       {flights.length > 0 && <FlightsTitle prop={"past"} />}
       {flights.map((flight) => (
-        <Button
+        <OneFlight
           flight={flight}
           remove={remove}
           updateStatus={updateStatus}
@@ -131,7 +131,7 @@ const Flights = () => {
       ))}
       {upcomings.length > 0 && <FlightsTitle />}
       {upcomings.map((flight) => (
-        <Button
+        <OneFlight
           flight={flight}
           remove={remove}
           color={"color"}

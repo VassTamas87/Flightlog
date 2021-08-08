@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Formik } from "formik";
-import MyTextField from "./MyTextField";
-import { LoginSchema } from "./Schemas";
+import MyTextField from "../components/forms/MyTextField";
+import { LoginSchema } from "../components/forms/Schemas";
 import axios from "axios";
 import { useHistory, Link } from "react-router-dom";
 

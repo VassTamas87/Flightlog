@@ -1,12 +1,12 @@
 import React from "react";
 import { Form, Formik } from "formik";
-import { RankSchema } from "./Schemas";
+import { RankSchema } from "../components/forms/Schemas";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import Ranks from "./Ranks";
-import Field from "./Field";
-import BackLink from "./BackLink";
-import Message from "./Message";
+import Ranks from "../components/select/Ranks";
+import Field from "../components/forms/Field";
+import BackLink from "../components/buttons/BackLink";
+import Message from "../pages/Message";
 
 const RankChange = () => {
   const history = useHistory();

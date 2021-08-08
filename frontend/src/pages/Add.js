@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import { Form, Formik } from "formik";
-import MyTextField from "./MyTextField";
-import { AddSchema } from "./Schemas";
+import MyTextField from "../components/forms/MyTextField";
+import { AddSchema } from "../components/forms/Schemas";
 import axios from "axios";
 import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
 import moment from "moment";
 import "moment/locale/en-gb";
-import Successful from "./Successful";
-import Back from "./Back";
+import Successful from "../components/Successful";
+import Back from "../components/buttons/Back";
 import { useHistory } from "react-router-dom";
 import Message from "./Message";
-import Field from "./Field";
-import Planes from "./Planes";
+import Field from "../components/forms/Field";
+import Planes from "../components/select/Planes";
 
 const format = (date) => {
   return moment(date).format("YYYY-MM-DD HH:mm");

@@ -9,7 +9,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import Message from "./Message";
+import Message from "../../pages/Message";
 import ChartsBackButton from "./ChartsBackButton";
 
 const CitiesChart = (props) => {

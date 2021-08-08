@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Back from "./Back";
+import Back from "../components/buttons/Back";
 import { useHistory } from "react-router-dom";
 
 const Total = () => {

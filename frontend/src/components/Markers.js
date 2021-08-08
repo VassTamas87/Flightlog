@@ -1,10 +1,15 @@
 import { Marker, Popup, Polyline } from "react-leaflet";
-import PlaneIcon from "./PlaneIcon";
+import PlaneIcon from "../assets/PlaneIcon";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+
 export default function MarkerWithPopup({ route }) {
   const [departureCity, setDepartureCity] = useState(null);
   const [destinationCity, setDestinationCity] = useState(null);
+  const depLat = departureCity?.geonames[0]?.lat;
+  const depLng = departureCity?.geonames[0]?.lng;
+  const desLat = destinationCity?.geonames[0]?.lat;
+  const desLng = destinationCity?.geonames[0]?.lng;
 
   useEffect(() => {
     async function fetchData() {
@@ -40,28 +45,16 @@ export default function MarkerWithPopup({ route }) {
     departureCity !== null &&
     destinationCity !== null && (
       <>
-        <Marker
-          position={[
-            departureCity.geonames[0].lat,
-            departureCity.geonames[0].lng,
-          ]}
-          icon={PlaneIcon}
-        >
+        <Marker position={[depLat, depLng]} icon={PlaneIcon}>
           <Popup>{route.city}</Popup>
         </Marker>
-        <Marker
-          position={[
-            destinationCity.geonames[0].lat,
-            destinationCity.geonames[0].lng,
-          ]}
-          icon={PlaneIcon}
-        >
+        <Marker position={[desLat, desLng]} icon={PlaneIcon}>
           <Popup>{route.destination}</Popup>
         </Marker>
         <Polyline
           positions={[
-            [departureCity.geonames[0].lat, departureCity.geonames[0].lng],
-            [destinationCity.geonames[0].lat, destinationCity.geonames[0].lng],
+            [depLat, depLng],
+            [desLat, desLng],
           ]}
         />
       </>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import CitiesChart from "./CitiesChart";
-import HoursChart from "./HoursChart";
+import CitiesChart from "../components/charts/CitiesChart";
+import HoursChart from "../components/charts/HoursChart";
 import { useHistory } from "react-router-dom";
 
 const Charts = () => {

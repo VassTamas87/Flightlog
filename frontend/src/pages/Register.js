@@ -1,12 +1,12 @@
 import React from "react";
 import { Form, Formik } from "formik";
-import MyTextField from "./MyTextField";
-import { RegisterSchema } from "./Schemas";
+import MyTextField from "../components/forms/MyTextField";
+import { RegisterSchema } from "../components/forms/Schemas";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import Ranks from "./Ranks";
-import Field from "./Field";
-import BackLink from "./BackLink";
+import Ranks from "../components/select/Ranks";
+import Field from "../components/forms/Field";
+import BackLink from "../components/buttons/BackLink";
 
 const Register = () => {
   const history = useHistory();

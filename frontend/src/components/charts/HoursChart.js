@@ -9,7 +9,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import Message from "./Message";
+import Message from "../../pages/Message";
 import moment from "moment";
 import ChartsBackButton from "./ChartsBackButton";
 
