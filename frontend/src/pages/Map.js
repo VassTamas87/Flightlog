@@ -4,11 +4,13 @@ import Back from "../components/buttons/Back";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Markers from "../components/Markers";
+import Message from "./Message";
 
 const Map = () => {
   const position = [48.1, 20.78333];
   const userId = localStorage.getItem("user");
   const [routes, setRoutes] = useState([]);
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     async function fetchData() {
@@ -27,7 +29,9 @@ const Map = () => {
     fetchData();
   }, [userId]);
 
-  return (
+  return !token ? (
+    <Message prop={"denied"} />
+  ) : (
     <div className="m-3">
       <MapContainer
         center={position}

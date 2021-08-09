@@ -27,6 +27,7 @@ const Card = () => {
         setUsername(response.data.username);
         setRank(response.data.position);
         localStorage.setItem("user", response.data.id);
+        localStorage.setItem("username", response.data.username);
         setIsReady(true);
       } catch (error) {
         console.error(error);
@@ -88,6 +89,12 @@ const Card = () => {
             </button>
           </Link>
           <p className="card-text"></p>
+          <Link to={"/board"}>
+            <button href="#" className="btn btn-primary">
+              Message Board
+            </button>
+          </Link>
+          <p className="card-text"></p>
           <Link to={"/map"}>
             <button href="#" className="btn btn-primary">
               Flight Routes
@@ -97,12 +104,6 @@ const Card = () => {
           <Link to={"/charts"}>
             <button href="#" className="btn btn-primary">
               Flight Charts
-            </button>
-          </Link>
-          <p className="card-text"></p>
-          <Link to={"/message/logout"}>
-            <button href="#" className="btn btn-primary">
-              Logout
             </button>
           </Link>
         </div>

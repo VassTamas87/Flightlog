@@ -1,6 +1,5 @@
 package hu.flowacademy.service;
 
-import hu.flowacademy.dto.PostSaveDto;
 import hu.flowacademy.exception.ValidateException;
 import hu.flowacademy.model.Post;
 import hu.flowacademy.model.User;
@@ -26,23 +25,23 @@ public class PostService {
         return postRepository.findAll();
     }
 
-    public Post save(PostSaveDto postSaveDto, String userId) {
+    public Post save(String comment, String userId) {
         User user = userRepository.findFirstById(userId);
-        Post post = Post.builder().comment(postSaveDto.getComment()).createdAt(LocalDateTime.now()).user(user).build();
+        Post post = Post.builder().comment(comment).createdAt(LocalDateTime.now()).user(user).build();
         validate(post);
         return postRepository.save(post);
     }
 
-    public Post update(PostSaveDto postSaveDto, String postId) {
+    public Post update(String comment, String postId) {
         Post post = postRepository.findById(postId).orElseThrow();
         if (!postRepository.existsById(post.getId())) {
             throw new ValidateException("No post exists with the provided id!!!");
         }
-        if (!StringUtils.hasText(postSaveDto.getComment())) {
+        if (comment == null) {
             throw new ValidateException("Comment should be present!!!");
         }
         return postRepository.save(post.toBuilder().id(postId).updatedAt(LocalDateTime.now())
-                .comment(postSaveDto.getComment()).build());
+                .comment(comment).build());
     }
 
     public void delete(String postId) {

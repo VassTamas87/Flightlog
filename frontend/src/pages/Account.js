@@ -38,6 +38,12 @@ const Account = () => {
             </button>
           </Link>
           <p className="card-text"></p>
+          <Link to={"/message/logout"}>
+            <button href="#" className="btn btn-primary">
+              Logout
+            </button>
+          </Link>
+          <p className="card-text"></p>
           <Back />
         </div>
       </div>

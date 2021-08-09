@@ -33,7 +33,7 @@ class UserControllerTest {
         String jsonString = mapper.writeValueAsString(user);
 
         mockMvc.perform(post("/users").contentType(MediaType.APPLICATION_JSON)
-                .content(jsonString))
+                        .content(jsonString))
                 .andExpect(status().isCreated())
                 .andExpect(content()
                         .contentTypeCompatibleWith(MediaType.APPLICATION_JSON))

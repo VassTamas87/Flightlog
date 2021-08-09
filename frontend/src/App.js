@@ -15,6 +15,7 @@ import Question from "./pages/Question";
 import Upload from "./pages/Upload";
 import RankChange from "./pages/RankChange";
 import Map from "./pages/Map";
+import Board from "./pages/Board";
 
 function App() {
   return (
@@ -104,6 +105,12 @@ function App() {
               <title>Map</title>
             </Helmet>
             <Map />
+          </Route>
+          <Route exact path="/board">
+            <Helmet>
+              <title>Message Board</title>
+            </Helmet>
+            <Board />
           </Route>
         </Switch>
       </BrowserRouter>

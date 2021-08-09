@@ -30,14 +30,14 @@ public class PostController {
     @ResponseStatus(HttpStatus.CREATED)
     public Post save(@RequestBody PostSaveDto postSaveDto, @PathVariable String userId) {
         log.info("Post created at the user with the id: {}", userId);
-        return postService.save(postSaveDto, userId);
+        return postService.save(postSaveDto.getComment(), userId);
     }
 
     @PutMapping("/{postId}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public Post update(@RequestBody PostSaveDto postSaveDto, @PathVariable String postId) {
         log.info("Post updated with the id: {}", postId);
-        return postService.update(postSaveDto, postId);
+        return postService.update(postSaveDto.getComment(), postId);
     }
 
     @DeleteMapping("/{postId}")

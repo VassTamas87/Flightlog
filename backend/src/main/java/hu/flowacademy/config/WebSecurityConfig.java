@@ -35,8 +35,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(username ->
-                userRepository.findFirstByUsername(username).orElseThrow(() -> new UsernameNotFoundException(username))
-        )
+                        userRepository.findFirstByUsername(username).orElseThrow(() -> new UsernameNotFoundException(username))
+                )
                 .passwordEncoder(passwordEncoder());
     }
 
