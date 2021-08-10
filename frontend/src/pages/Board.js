@@ -83,6 +83,7 @@ const Board = () => {
                 onChange={(e) => setComment(e.target.value)}
                 value={comment}
                 id="comment"
+                placeholder="Enter your message here..."
               />
               <Back />
               <button className="btn btn-warning" onClick={post}>

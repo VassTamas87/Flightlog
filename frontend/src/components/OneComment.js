@@ -23,7 +23,7 @@ const OneComment = ({ post, remove, userName }) => {
       }
     }
     fetchData();
-  }, []);
+  }, [post.userId]);
 
   return (
     <div className="comments list-group-item mt-3">
@@ -44,14 +44,18 @@ const OneComment = ({ post, remove, userName }) => {
         <div>{post.comment}</div>
         <div className="bottom-line">
           {userName === post.username && (
-            <button className="link-button" onClick={() => remove(post)}>
-              edit
-            </button>
+            <i
+              className="fa fa-pencil edit-btn link-button"
+              aria-hidden="true"
+              onClick={handleRemove}
+            ></i>
           )}
           {userName === post.username && (
-            <button className="link-button" onClick={handleRemove}>
-              delete
-            </button>
+            <i
+              className="fa fa-trash-o del-btn"
+              aria-hidden="true"
+              onClick={handleRemove}
+            ></i>
           )}
         </div>
       </div>
