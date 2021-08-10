@@ -114,10 +114,12 @@ const OneFlight = ({ flight, remove, color, updateStatus }) => {
             </h5>
             <div>
               <Popup
+                offsetY={-215}
+                contentStyle={{ width: "550px" }}
                 trigger={<button className="btn btn-secondary">Show</button>}
-                position="right top"
+                position="right center"
               >
-                <div className="wrapper">
+                <div>
                   <Forecast
                     label={flight.destination}
                     lat={destinationCity.geonames[0].lat}

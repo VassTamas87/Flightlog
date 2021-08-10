@@ -11,7 +11,7 @@ const Forecast = ({ label, lat, lon }) => {
   });
 
   return (
-    <ReactWeather
+    <ReactWeather 
       isLoading={isLoading}
       errorMessage={errorMessage}
       data={data}

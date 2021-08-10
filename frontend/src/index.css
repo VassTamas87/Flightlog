@@ -123,12 +123,6 @@ input[type="checkbox"] {
   height: auto;
 }
 
-.wrapper > div > div {
-  width: 484px !important;
-  padding: 24px !important;
-  border-radius: 10px;
-}
-
 .board {
   margin-top: auto;
 }
