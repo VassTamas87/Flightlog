@@ -68,7 +68,7 @@ const OneFlight = ({ flight, remove, color, updateStatus }) => {
     departureCity !== null &&
     destinationCity !== null && (
       <div
-        className={`list-group-item list-group-item-${
+        className={`flights list-group-item list-group-item-${
           color ? "warning" : "info"
         }`}
         onMouseEnter={handleMouseEnter}

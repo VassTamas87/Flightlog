@@ -38,7 +38,7 @@ code {
   border-radius: 10px;
 }
 
-.list-group-item {
+.flights {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -131,4 +131,59 @@ input[type="checkbox"] {
 
 .board {
   margin-top: auto;
+}
+
+.link-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  display: inline;
+  margin: 0;
+  padding: 0;
+  color: blue;
+  margin-right: 8px;
+  font-size: small;
+}
+
+.comments {
+  display: flex;
+  flex-direction: row;
+
+  flex-wrap: wrap;
+  background-color: rgb(214, 212, 212);
+  border-radius: 10px 10px 10px 10px;
+}
+
+.first {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border-bottom: 1px solid rgb(0, 0, 0);
+  margin-bottom: 10px;
+  justify-content: space-between;
+}
+
+.createdAt {
+  font-size: small;
+  margin-left: 10px;
+  margin-top: auto;
+}
+
+.name {
+  font-size: large;
+}
+
+.bottom-line {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.comment-pic {
+  max-width: 70px;
+  height: 70px;
+}
+
+.comment {
+  width: 90%;
 }

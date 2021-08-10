@@ -43,7 +43,7 @@ const Longest = () => {
   ) : (
     <div>
       <FlightsTitle prop={"longest"} />
-      <div className="list-group-item list-group-item-info">
+      <div className="flights list-group-item list-group-item-info">
         <div>
           <h5>
             <b>Flight Id:</b>

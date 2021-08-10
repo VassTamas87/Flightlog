@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 public class PostDto {
 
     private String id;
+    private String userId;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private String username;
@@ -23,6 +24,7 @@ public class PostDto {
     public static PostDto toDto(Post post) {
         PostDto postDto = new PostDto();
         postDto.setId(post.getId());
+        postDto.setUserId(post.getUser().getId());
         postDto.setCreatedAt(post.getCreatedAt());
         postDto.setUpdatedAt(post.getUpdatedAt());
         postDto.setUsername(post.getUser().getUsername());
