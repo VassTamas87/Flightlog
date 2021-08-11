@@ -9,7 +9,6 @@ const Board = () => {
   const userName = localStorage.getItem("username");
   const [posts, setPosts] = useState([]);
   const [comment, setComment] = useState("");
-  const [editedComment, setEditedComment] = useState("");
   const token = localStorage.getItem("token");
   const [isPosted, setIsPosted] = useState(false);
   const [isEdited, setIsEdited] = useState(false);
@@ -50,11 +49,11 @@ const Board = () => {
     } catch (error) {}
   };
 
-  const update = async (post) => {
+  const update = async (post, defaultValue) => {
     try {
       await axios.put(
         `/api/posts/${post.id}`,
-        { comment: editedComment },
+        { comment: defaultValue },
         {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),
@@ -62,7 +61,7 @@ const Board = () => {
         }
       );
       setIsEdited(!isEdited);
-      setEditedComment("");
+      //setEditedComment("");
     } catch (error) {}
   };
 
@@ -92,7 +91,6 @@ const Board = () => {
                     remove={remove}
                     key={post.id}
                     userName={userName}
-                    setEditedComment={setEditedComment}
                     update={update}
                   />
                 ))}

@@ -9,15 +9,15 @@ const format = (date) => {
   return moment(date).format("YYYY-MM-DD HH:mm");
 };
 
-const OneComment = ({ post, remove, userName, setEditedComment, update }) => {
+const OneComment = ({ post, remove, userName, update }) => {
   const handleRemove = () => remove(post);
-  const handleUpdate = () => update(post);
+  const handleUpdate = () => {
+    update(post, defaultValue);
+    setIsOpen(false);
+  };
   const [hasImage, setHasImage] = useState(false);
   const [defaultValue, setDefaultValue] = useState(post.comment);
-  const handleChange = (e) => {
-    setEditedComment(e.target.value);
-    setDefaultValue(e.target.value);
-  };
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -60,6 +60,8 @@ const OneComment = ({ post, remove, userName, setEditedComment, update }) => {
         <div className="bottom-line">
           {userName === post.username && (
             <Popup
+              onOpen={() => setIsOpen(true)}
+              open={isOpen}
               contentStyle={{ width: "350px" }}
               trigger={
                 <i
@@ -74,7 +76,7 @@ const OneComment = ({ post, remove, userName, setEditedComment, update }) => {
                   className="w-100"
                   type="text"
                   value={defaultValue}
-                  onChange={(e) => handleChange(e)}
+                  onChange={(e) => setDefaultValue(e.target.value)}
                 ></input>
                 <button onClick={handleUpdate} className="btn btn-primary mt-3">
                   Save
